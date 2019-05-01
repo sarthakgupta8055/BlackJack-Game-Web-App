@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BlackJack</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/blackjack.css">
+	<link href='https://fonts.googleapis.com/css?family=Allan' rel='stylesheet'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body>
+	<div>
+		<header>
+			<div class="p-2 color-white" title="BlackJack">
+				<b class="font-roboto font-large-2" id="highScore" title="Highest Score"></b>
+				<b class="float-center font-style">The Number 21</b>
+				<img class="height-1" src="resources/chips/21.png">
+				<span class="float-right font-large-1">
+					<button class="btn font-style font-large-1 header-background inline" id="myBtn" title="How To Play">Rules</button>
+				</span>
+			</div>
+		</header>
+	</div>
+	<div id="myModal" class="modal">
+	  <!-- Modal content -->
+ 		 <div class="modal-content">
+    		<span class="close">&times;</span>
+    		<p class="text-center font-large-2"><b>Rules for BlackJack</b></p>
+    		<p class="p-1"><b>NOTE:</b>Here we have used infinite deck of cards.</p>
+    		<p class="p-1"><b>Cards:</b> A standard deck of playing cards is used, i.e., four suits (clubs, diamonds,
+				spades, and hearts) and 13 different cards within each suit (the numbers 2 through
+				10, jack, queen, king, and ace).
+			</p>
+			<p class="p-1">we had replace 10, jack,queen and king with a generic 'face card'. We will assume an infinite number of
+				decks available in the pack.
+			</p>
+			<p class="p-1"><b>Card Values:</b> The numbered cards (2 through 9) count as their numerical value.The generic face card (replacing 10, jack, queen, and king) counts as 10, and the ace may count as either 1 or 11 (whichever works in the player's favour).</p>
+			<p><b class="text-center">How To Play</b><br>
+				<b>1.</b> Each player places a bet on the hand.<br>
+			   <b>2.</b> The dealer deals two cards to each player, including himself. The player's cardswill be face-up. One of the dealers cards is face-up, but the other is face-down.<br>
+			   <b>3.</b> The player must do one of the following:				
+			</p>
+			<p class="p-1">
+				<b>H - Hit:</b> The player receives one additional card (face up). A player can receive as many cards as he or she wants, but if the value of the player's hand exceeds 21, the player busts and loses the bet on this hand irrespective of dealer's hand.
+			</p>
+			<p class="p-1">
+				<b>S - Stand:</b> The player does not want any additional cards.
+			</p>
+			<p class="p-1">
+				<b>D - Double-down:</b> Before the player has received any additional cards, she may
+				double-down. This means that the player doubles her bet on the hand and will receive exactly one additional card.
+			</p>
+  		</div>
+	</div>
+
+	<div class="outer-container board color-white">
+		<div class="text-center p-1 font-large font-roboto" id="information">Place Your Bets</div>
+		<div class="col1 p-2">
+			<input type="image" id="dollar1" onclick="amt(id)" src="resources/chips/1.jpg" >
+			<input type="image" id="dollar10" onclick="amt(id)" src="resources/chips/5.jpg">
+			<input type="image" id="dollar100" onclick="amt(id)" src="resources/chips/100.jpg">
+			<input type="image" id="dollar500" onclick="amt(id)" src="resources/chips/500.jpg">
+			<div>
+				<p class="m-left-1 font-roboto font-large-1 color-red" id="balance" title="Account Balance"></p>
+			</div>
+		</div>
+		<div class="col2 m-2">
+			<p class="color-white font-large font-roboto p-2 color-powderblue">Player</p>
+			<div  id="playerCard"></div>
+			<div>
+				<p class="p-2 font-roboto font-large-1 color-yellow" id="playerCardValue">Cards Value :</p>
+				<p class="p-2 font-roboto font-large-1 color-cyan" id="bets">Bet Money: 0$</p>
+			</div>
+			<div>
+				<button class="btn" id="deal_btn" onclick="deal()">Deal</button>
+				<button class="btn" id="hit_btn" onclick="hit()">Hit</button>
+				<button class="btn" id="stand_btn" onclick="stand()">Stand</button>
+				<button class="btn" id="double_btn" onclick="double()">Double Down</button>
+				<button class="btn" id="again_btn" onclick="hideCards()">Play Again?</button>
+				<button class="btn" id="newGame_btn" onclick="restart()">New Game?</button>
+			</div>
+		</div>
+		<div class="col3 m-2">
+			<p class="font-large color-white font-roboto p-2 color-powderblue">Dealer</p>
+			<div id="dealerCard">
+				<!--<img id="backImg" src="resources/backside.jpg">-->
+			</div>
+			<div>
+				<p class="p-2 font-roboto font-large-1 color-yellow" id="dealerCardValue">Cards Value :</p>
+			</div>
+		</div>
+	</div>
+	<div>
+		<footer>
+		<div>
+			<div class="text-center p-1"><p>Copyright © The_Number_21.com 2019 </p>
+				<p>The_Number_21.com is a social casino where you can play BlackJack game with play money.</p>
+				<p>There is no real money involved in any games on The_Number_21.com - It's all about entertainment! </p>
+				<p>The_Number_21.com is intended for an adult audience( 18+ ) and does not offer 'real money' gambling or an </p>
+				<p>opportunity to win real money or prizes.</p>
+				<p>Practice at social gambling does not imply future success at 'real money' gambling.
+				</p>
+			</div>
+			<div class="text-center p-1">
+				<div class="p-1 inline-block">
+					<a class="m-1" href="Footer.html">About Us
+						<i class="fa fa-newspaper-o" style="font-size:20px;color: black;"></i>
+					</a>
+				</div>
+				<div class="p-1 inline-block">
+					<a class="m-1" href="Footer.html">Privacy Policy
+						<i class="fa fa-lock" style="font-size:20px;color: black"></i>
+					</a>
+				</div>
+				<div class="inline-block">
+					<a href="#terms">Terms and Condition
+						<i class=""></i>
+					</a>
+				</div>
+			</div>
+		</div>
+		</footer>
+	</div>
+	<script src="scripts/BlackJack.js"></script>
+</body>
+</html>
