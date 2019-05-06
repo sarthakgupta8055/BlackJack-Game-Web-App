@@ -80,7 +80,7 @@ function display_balance() {
 	bal.innerHTML="Account: "+amount + "$";
 	//Retrive from browser storage
 	document.getElementById('highScore').innerHTML="Highest Score :"+localStorage.getItem("Score")+" $";
-	if (amount==3000){//For new game chips are visible
+	if (amount>=3000){//For new game chips are visible
 		document.getElementById('dollar1').style.display="inline";
 		document.getElementById('dollar10').style.display="inline";
 		document.getElementById('dollar100').style.display="inline";
@@ -269,7 +269,7 @@ function stand() {
 }
 function double(){
 	player=1;
-	if(amount-(betAmount*2)>0){
+	if(amount-(betAmount*2)>=0){
 		betAmount*=2;
 		amount-=betAmount;
 		display_balance(amount);
@@ -292,6 +292,9 @@ function startBets(){
 	document.getElementById('dollar500').disabled=false;
 }
 function hideCards() {//FOR PLAY AGAIN
+	bet_amount(betAmount);
+	startBets();
+	display_balance();
 	while (element.firstChild) {
     element.removeChild(element.firstChild);
 	}
@@ -316,19 +319,5 @@ function hideCards() {//FOR PLAY AGAIN
 function restart() {//New Game
 	amount=3000;//Reset Amount
 	betAmount=0;//Reset Bet Amount
-	document.getElementById('deal_btn').style.display="none";
-	document.getElementById('hit_btn').style.display="none";
-	document.getElementById('stand_btn').style.display="none";
-	document.getElementById('double_btn').style.display="none";
-	document.getElementById('again_btn').style.display="none";
-	document.getElementById('information').innerHTML="Place Your Bets"
-	value=0;
-	value2=0;
-	flag=0;
-	document.getElementById('playerCardValue').innerHTML="Cards Value :" +value;
-	document.getElementById('dealerCardValue').innerHTML="Cards Value :" +value2;
-	betAmount=0;
-	display_balance();
-	bet_amount(betAmount);
-	startBets();
+	hideCards();
 }
