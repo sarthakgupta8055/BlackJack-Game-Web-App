@@ -99,6 +99,14 @@ function display_balance() {
 		document.getElementById('dollar100').style.display="none";
 	if(amount<500)
 		document.getElementById('dollar500').style.display="none";
+	if(amount>=1)
+		document.getElementById('dollar1').style.display="inline";
+	if(amount>=10)
+		document.getElementById('dollar10').style.display="inline";
+	if(amount>=100)
+		document.getElementById('dollar100').style.display="inline";
+	if(amount>=500)
+		document.getElementById('dollar500').style.display="inline";
 	if(betAmount>0)
 	{
 		if(flag==0)
